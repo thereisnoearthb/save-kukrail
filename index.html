@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta property="og:title" content="Save Kukrail Forest">
+  <!-- TODO: Update OG description -->
+  <meta property="og:description" content="">
+  <!-- TODO: Add OG image -->
+  <meta property="og:image" content="">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="title" content="Save Kukrail Forest: Official Website of the movement">
+  <title>Save Kukrail Forest: Official Website of the movement</title>
+  <!-- TODO: Add meta tags -->
+  <meta name="keywords" content="">
+
+  <link rel="icon" href="https://thereisnoearthb.com/TINEB_LOGO.jpeg" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS for Carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- TINEB Stylesheet -->
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      text-align: justify;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      /* Prevents content overlap by fixed footer */
+    }
+
+    /* Container for the logo with shadow */
+    .logo-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      /* Page header element now acts similarly to a fixed navbar */
+      position: fixed;
+      z-index: 99;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Container for page titles */
+    .title-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: "Sulphur Point", sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 3rem;
+      line-height: 1;
+      color: #2e4989;
+      text-align: center;
+      margin-top: 0.7em;
+      margin-bottom: 0.25em;
+      /* Space between title and subtitle */
+    }
+
+    .page-subtitle {
+      font-family: "Sulphur Point", sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1;
+      text-align: center;
+      letter-spacing: -0.01em;
+      color: #42367d;
+    }
+
+    /* Card Styles */
+    .campaign-card {
+      background-color: #fff;
+      border-radius: 16px;
+      /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+      width: 100%;
+      max-width: 314px;
+      overflow: hidden;
+      /* Override */
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 13px;
+      padding: 30px 29.5px 25px 29.5px;
+      position: relative;
+      margin-bottom: 1.2rem;
+      overflow: visible;
+      /* Allow nav buttons to be positioned outside its bounds */
+    }
+
+    /* Carousel Styles */
+    .swiper {
+      border-radius: 16px;
+      overflow: visible;
+      /* Allow nav buttons to be positioned outside its bounds */
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Card Content Styles */
+    .card-content {
+      padding: 0.5rem 0;
+    }
+
+    .card-text {
+      margin: 10px 0;
+      font-size: 12px;
+      /* line-height: 1.6; */
+    }
+
+    /* Social Button Styles */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-btn {
+      background-color: #2e4989;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .social-btn:hover {
+      background-color: #1c2d55;
+      /* Darker blue on hover */
+      box-shadow: 0 4px 8px darkgrey;
+      /* Adds a shadow on hover */
+    }
+
+    .social-btn img {
+      width: 50%;
+      height: 50%;
+      display: block;
+      /* Ensures the image behaves as a block element */
+      object-fit: contain;
+      /* Maintains aspect ratio */
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Link Buttons */
+    .link-button {
+      display: block;
+      width: 100%;
+      max-width: 314px;
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      margin-bottom: 1.2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+      border: 1px solid #000000;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    #link-button-wrapper {
+      width: 100%;
+      max-width: 314px;
+    }
+
+    .swiper-pagination-bullet {
+      /* Manually setting the sizes of the bullets */
+      width: 6px;
+      height: 6px;
+      /* Manually adjusting the position of the bullets */
+      position: relative;
+      top: 20px;
+      display: inline-block;
+      border: 1px solid #5385fb;
+      background: none;
+      opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.9);
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #173b91 !important;
+    }
+
+    /* Swiper left and right button styling */
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 25px;
+      /* Size of the circular button */
+      height: 25px;
+      background-color: #2e4989;
+      border-radius: 50%;
+    }
+
+    .swiper-button-prev {
+      left: -43px;
+    }
+
+    .swiper-button-next {
+      right: -43px;
+    }
+
+    /* Arrow within the button */
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 16px;
+      /* Adjust arrow icon size */
+      font-weight: bold;
+      color: white;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background-color: #173b91;
+      /* Darker blue on hover */
+    }
+
+    /* Scroll to Top Button Styles */
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 6.5rem;
+      right: calc(50% - 180px);
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #2e4989;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #scrollTopBtn img {
+      width: 50%;
+      height: 50%;
+      display: block;
+      /* Ensures the image behaves as a block element */
+      object-fit: contain;
+      /* Maintains aspect ratio */
+      margin: auto;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #1c2d55;
+      /* Darker blue on hover */
+      box-shadow: 0 4px 8px darkgrey;
+      /* Adds a shadow on hover */
+    }
+
+    /* Styles for Desktop (e.g., screens wider than 768px) */
+    @media (min-width: 768px) {
+      #scrollTopBtn {
+        /* Override properties for desktop */
+        bottom: 6rem;
+        right: 3rem;
+      }
+    }
+
+    .instagram-filter {
+      width: 100%;
+    }
+
+    /* Footer Styles */
+    footer {
+      position: fixed;
+      bottom: 0;
+      /* Stick to the bottom */
+      left: 0;
+      /* Align to the left */
+      width: 100%;
+      /* Span full width */
+      background-color: #fdfaea;
+      padding: 20px 15px;
+      border-top: 1px solid #e0e0e0;
+      z-index: 100;
+    }
+
+    .footer-content-wrapper {
+      max-width: 700px;
+      /* Constrain content width for readability */
+      margin: 0 auto;
+      /* Center the wrapper */
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 0.875rem;
+      color: #333;
+    }
+
+    .footer-text a {
+      color: #42367d;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="title-container">
+    <h1 class="page-title">Save Kukrail Forest</h1>
+  </div>
+
+  <div class="campaign-card">
+    <!-- Swiper Carousel -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="pictures/Carousel/slide1.png" alt="Kukrail Forest image" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="pictures/Carousel/slide2.png" alt="Kukrail Forest image" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="pictures/Carousel/slide3.png" alt="Kukrail Forest image" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="pictures/Carousel/slide4.png" alt="Kukrail Forest image" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="pictures/Carousel/slide5.png" alt="Kukrail Forest image" loading="lazy">
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Card Content -->
+    <div class="card-content">
+      <div class="card-text">
+        <p>
+          The proposed Night Safari project in Lucknow threatens to destroy 50% of the Kukrail Forest, one of the city's
+          last remaining green spaces. Over 1,500 trees will be cut, and the city zoo will be relocated here, risking
+          severe disruption to the natural habitat. Home to leopards, jackals, gharials, and migratory birds, Kukrail’s
+          delicate ecosystem faces irreversible damage. Increased human activity, waste, and enclosures will harm
+          wildlife and worsen air quality and rising temperatures. Saving Kukrail is not just about trees, it’s about
+          protecting life, climate, and the city’s future.
+        </p>
+      </div>
+    </div>
+
+    <!-- Social Buttons -->
+    <div class="social-buttons">
+      <!-- <a href="mail.html" target="_blank" rel="noopener noreferrer" class="social-btn email-btn" aria-label="Email Button">
+        <img src="assets/email-white.svg" alt="Email icon">
+      </a> -->
+
+      <!-- <a href="https://x.com/official_dda/status/1904894651871404074" class="social-btn x-btn" target="_blank"
+        rel="noopener noreferrer" aria-label="X Button">
+        <img src="assets/twitter-x-white.svg" alt="X icon">
+      </a> -->
+
+      <!-- <a href="https://www.instagram.com/thereisnoearthb/" class="social-btn instagram-btn" target="_blank"
+        rel="noopener noreferrer" aria-label="Instagram Button">
+        <img src="assets/instagram-white.svg" alt="Instagram icon">
+      </a> -->
+
+      <!-- <a href="https://chat.whatsapp.com/FRKhIryCoxr7ewbkA89wpT" class="social-btn whatsapp-btn" target="_blank"
+        rel="noopener noreferrer" aria-label="WhatsApp Button">
+        <img src="assets/whatsapp-white.svg" alt="WhatsApp icon">
+      </a> -->
+    </div>
+  </div>
+
+  <div id="link-button-wrapper">
+
+    <div class="link-button-section">
+      <!-- <h3 class="section-heading">Campaign Updates</h3> -->
+    </div>
+
+    <div class="link-button-section">
+      <!-- <h3 class="section-heading">Media Mentions</h3> -->
+    </div>
+
+    <div class="link-button-section">
+      <!-- <h3 class="section-heading">Cleanup Posts</h3> -->
+
+    </div>
+
+
+    <!-- Scroll to top button -->
+    <button id="scrollTopBtn" title="Go to top" type="button">
+      <img src="assets/arrow-up-white.svg" alt="Scroll to top">
+    </button>
+
+    <footer>
+      <div class="footer-content-wrapper">
+        <div class="footer-text">
+          <span>
+            <a href="https://thereisnoearthb.com/" target="_blank" rel="noopener noreferrer">
+              This open-source website has been created by There Is No Earth B for the Save Kukrail Forest movement
+              which controls the content ✊</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- swiper.js initialization -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.swiper', {
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          touchEventsTarget: 'container',
+          a11y: {
+            enabled: true
+          }
+        });
+      });
+    </script>
+
+    <!-- Scroll to top script -->
+    <script>
+      const scrollTopBtn = document.getElementById("scrollTopBtn");
+      window.onscroll = function () { scrollFunction() };
+
+      // Button appears only after scrolling down by 20px
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          scrollTopBtn.style.display = "block";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      }
+
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+</body>
+
+</html>
