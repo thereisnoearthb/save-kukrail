@@ -131,6 +131,10 @@
       /* Allow nav buttons to be positioned outside its bounds */
     }
 
+    .swiper-invisible {
+      visibility: hidden;
+    }
+
     .swiper-slide img {
       width: 100%;
       height: 100%;
@@ -356,7 +360,7 @@
 
   <header class="page-header">
     <div class="logo-container">
-      <img src="assets/save-kukrail-logo.png" alt="Save Kukrail logo" width="100px" height="100px"/>
+      <img src="assets/save-kukrail-logo.png" alt="Save Kukrail logo" width="100px" height="100px" />
     </div>
   </header>
 
@@ -367,7 +371,7 @@
   <div class="campaign-card">
     <!-- Swiper Carousel -->
     <div class="swiper">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper swiper-invisible">
         <div class="swiper-slide">
           <img src="pictures/Carousel/slide1.webp" alt="Kukrail Forest image" loading="lazy">
         </div>
@@ -518,6 +522,11 @@
           touchEventsTarget: 'container',
           a11y: {
             enabled: true
+          },
+          on: {
+            init: function () {
+              document.querySelector('.swiper-wrapper').classList.remove('swiper-invisible');
+            }
           }
         });
       });
