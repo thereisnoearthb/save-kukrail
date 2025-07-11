@@ -131,9 +131,13 @@
       /* Allow nav buttons to be positioned outside its bounds */
     }
 
+    .swiper-invisible {
+      visibility: hidden;
+    }
+
     .swiper-slide img {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -356,7 +360,7 @@
 
   <header class="page-header">
     <div class="logo-container">
-      <img src="assets/save-kukrail-logo.png" alt="Save Kukrail logo" width="100px" height="100px"/>
+      <img src="assets/save-kukrail-logo.png" alt="Save Kukrail logo" width="100px" height="100px" />
     </div>
   </header>
 
@@ -367,21 +371,21 @@
   <div class="campaign-card">
     <!-- Swiper Carousel -->
     <div class="swiper">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper swiper-invisible">
         <div class="swiper-slide">
-          <img src="pictures/Carousel/slide1.png" alt="Kukrail Forest image" loading="lazy">
+          <img src="pictures/Carousel/slide1.webp" alt="Kukrail Forest image" loading="lazy">
         </div>
         <div class="swiper-slide">
-          <img src="pictures/Carousel/slide2.png" alt="Kukrail Forest image" loading="lazy">
+          <img src="pictures/Carousel/slide2.webp" alt="Kukrail Forest image" loading="lazy">
         </div>
         <div class="swiper-slide">
-          <img src="pictures/Carousel/slide3.png" alt="Kukrail Forest image" loading="lazy">
+          <img src="pictures/Carousel/slide3.webp" alt="Kukrail Forest image" loading="lazy">
         </div>
         <div class="swiper-slide">
-          <img src="pictures/Carousel/slide4.png" alt="Kukrail Forest image" loading="lazy">
+          <img src="pictures/Carousel/slide4.webp" alt="Kukrail Forest image" loading="lazy">
         </div>
         <div class="swiper-slide">
-          <img src="pictures/Carousel/slide5.png" alt="Kukrail Forest image" loading="lazy">
+          <img src="pictures/Carousel/slide5.webp" alt="Kukrail Forest image" loading="lazy">
         </div>
       </div>
       <div class="swiper-button-next"></div>
@@ -414,9 +418,9 @@
         <img src="assets/twitter-x-white.svg" alt="X icon">
       </a> -->
 
-      <a href="https://www.instagram.com/p/DLSfJjXvCdW/?img_index=1" class="social-btn instagram-btn" target="_blank"
+      <!-- <a href="https://www.instagram.com/p/DLSfJjXvCdW/?img_index=1" class="social-btn instagram-btn" target="_blank"
         rel="noopener noreferrer" aria-label="Instagram Button">
-        <img src="assets/instagram-white.svg" alt="Instagram icon">
+        <img src="assets/instagram-white.svg" alt="Instagram icon"> -->
       </a>
 
       <!-- <a href="https://chat.whatsapp.com/FRKhIryCoxr7ewbkA89wpT" class="social-btn whatsapp-btn" target="_blank"
@@ -427,6 +431,15 @@
   </div>
 
   <div id="link-button-wrapper">
+
+    <div class="link-button-section">
+      <h3 class="section-heading">Social Media Posts</h3>
+      <a class="link-button"
+        href="https://www.instagram.com/p/DLSfJjXvCdW/?img_index=1"
+        target="_blank">
+        Kukrail Forest - Instagram
+      </a>
+    </div>
 
     <div class="link-button-section">
       <h3 class="section-heading">Articles</h3>
@@ -518,6 +531,11 @@
           touchEventsTarget: 'container',
           a11y: {
             enabled: true
+          },
+          on: {
+            init: function () {
+              document.querySelector('.swiper-wrapper').classList.remove('swiper-invisible');
+            }
           }
         });
       });
