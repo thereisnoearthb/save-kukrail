@@ -496,73 +496,72 @@
         soon
       </a>
     </div>
+  </div>
 
+  <!-- Scroll to top button -->
+  <button id="scrollTopBtn" title="Go to top" type="button">
+    <img src="https://savekukrail.thereisnoearthb.com/assets/arrow-up-white.svg" alt="Scroll to top">
+  </button>
 
-
-    <!-- Scroll to top button -->
-    <button id="scrollTopBtn" title="Go to top" type="button">
-      <img src="https://savekukrail.thereisnoearthb.com/assets/arrow-up-white.svg" alt="Scroll to top">
-    </button>
-
-    <footer>
-      <div class="footer-content-wrapper">
-        <div class="footer-text">
-          <span>
-            <a href="https://thereisnoearthb.com/" target="_blank" rel="noopener noreferrer">
-              This open-source website has been created by There Is No Earth B for the Save Kukrail Forest movement
-              which controls the content ✊</a>
-          </span>
-        </div>
+  <footer>
+    <div class="footer-content-wrapper">
+      <div class="footer-text">
+        <span>
+          <a href="https://thereisnoearthb.com/" target="_blank" rel="noopener noreferrer">
+            This open-source website has been created by There Is No Earth B for the Save Kukrail Forest movement
+            which controls the content ✊</a>
+        </span>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <!-- swiper.js initialization -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.swiper', {
-          effect: 'fade',
-          fadeEffect: {
-            crossFade: true,
-          },
-          pagination: {
-            el: '.swiper-pagination',
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          touchEventsTarget: 'container',
-          a11y: {
-            enabled: true
-          },
-          on: {
-            init: function () {
-              document.querySelector('.swiper-wrapper').classList.remove('swiper-invisible');
-            }
+  <!-- swiper.js initialization -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('.swiper', {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        touchEventsTarget: 'container',
+        a11y: {
+          enabled: true
+        },
+        on: {
+          init: function () {
+            document.querySelector('.swiper-wrapper').classList.remove('swiper-invisible');
           }
-        });
-      });
-    </script>
-
-    <!-- Scroll to top script -->
-    <script>
-      const scrollTopBtn = document.getElementById("scrollTopBtn");
-      window.onscroll = function () { scrollFunction() };
-
-      // Button appears only after scrolling down by 20px
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          scrollTopBtn.style.display = "block";
-        } else {
-          scrollTopBtn.style.display = "none";
         }
-      }
-
-      scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-    </script>
+    });
+  </script>
+
+  <!-- Scroll to top script -->
+  <script>
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () { scrollFunction() };
+
+    // Button appears only after scrolling down by 20px
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    }
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 
 </body>
 
