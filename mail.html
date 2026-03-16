@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Kukrail Forest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <style>
+      body { background-color: white; color: black; padding-top: 1rem; padding-bottom: 1rem; }
+      .container { max-width: 800px; }
+      .btn-custom-primary { background-color: #2e4989; border-color: #2e4989; color: white; }
+      .btn-custom-primary:hover, .btn-custom-primary:focus { background-color: #1e3a75; border-color: #1e3a75; color: white; }
+      .btn-custom-secondary { background-color: #dfd3b9; border-color: #dfd3b9; color: black; }
+      .btn-custom-secondary:hover, .btn-custom-secondary:focus { background-color: #c9bfa5; border-color: #c9bfa5; color: black; }
+      .btn.disabled, .btn:disabled, fieldset:disabled .btn { pointer-events: none; opacity: 0.65; }
+      .email-preview { background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 1.5rem; margin-top: 1rem; border-radius: 0.375rem; white-space: pre-wrap; word-wrap: break-word; font-family: monospace; max-height: 50vh; overflow-y: auto; }
+      h5, h6 { color: #2e4989; }
+      #email-details p { margin-bottom: 0.5rem; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h5 class="mb-3 text-center">Email Preview & Actions</h5>
+      <p class="text-center text-muted small">Clicking on 'Send Mail' will open your email app.
+        <br>
+         If your email app doesn't open correctly, please use the copy button.</p>
+      <div class="text-center mb-4">
+        <a id="send" href="#" target="_blank" class="btn btn-custom-primary btn-lg me-2 disabled" role="button" title="Generating link...">
+          <i class="bi bi-send"></i> Send Mail
+        </a>
+        <button id="copy" class="btn btn-custom-secondary me-2" type="button">
+          <i class="bi bi-clipboard"></i> Copy Email Content
+        </button>
+      </div>
+      <h6>Email Details:</h6>
+      <div id="email-details" class="mb-3">
+        <p><strong>To:</strong> <span id="preview-to">(Generating...)</span></p>
+        <p id="cc-line" style="display: none;"><strong>Cc:</strong> <span id="preview-cc"></span></p>
+        <p id="bcc-line" style="display: none;"><strong>Bcc:</strong> <span id="preview-bcc"></span></p>
+        <p><strong>Subject:</strong> <span id="preview-subject">(Generating...)</span></p>
+      </div>
+      <h6>Email Body Preview:</h6>
+      <div id="email-preview" class="email-preview">(Generating...)</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      // --- Embedded Mail Generation Script START ---
+      
+      const TO_ADDRESS = "cmup@nic.in,csup@nic.in";
+      const CC_ADDRESS = "cza@nic.in,pccf-up@nic.in";
+      const BCC_ADDRESS = "solidarity@thereisnoearthb.com";
+      const SUBJECT_LINES = ["Urgent Citizen Appeal: Save Kukrail Forest","Submission of Citizen Concern Regarding Kukrail Night Safari Project","Save Kukrail: Protect Lucknow's \"Green Lung\"","Citizen Appeal Regarding Kukrail Night Safari"];
+      const PARA1_OPTIONS = ["Respected Official,\n\nI, the concerned citizens, write to you with a deep sense of urgency regarding the proposed Kukrail Night Safari Project. We are compelled to bring to your attention the irreversible ecological damage this project in its current form will cause. \n\nLucknow is facing an environmental crisis. Rapid urbanization has led to shrinking forest cover, rising temperatures, severe heatwaves, and dangerous PM2.5 air pollution levels that pose serious health risks to its citizens. In this context, the Kukrail reserve forest serves as the city's indispensable \"green lung.\" It traps dust, absorbs pollutants, acts as a natural heat shield, and provides a vital ecological buffer against climate extremes. This 75-year-old forest is also home to a Gharial Rehabilitation Centre, established in 1978, and has always been a \"democratic green commons\" where citizens from all walks of life can connect with nature free of cost."];
+      const PARA2_OPTIONS = ["As the highest decision-makers responsible for the welfare of our environment and citizens, I urge you to consider the following demands before any further action is taken:\n\n1. Protect Kukrail as Lucknow's \"Green Lung\" – Recognize and preserve its critical role in trapping pollutants, reducing heat, and safeguarding public health.\n2. Prevent Commercialization and Halt All Construction – Oppose the transformation of Kukrail into a \"high-end ecotourism zone\" with a night safari, 7D theatre, and art gallery. Halt all construction immediately. Follow the Central Empowered Committee's recommendation against the road that would cut 846 trees.\n3. Maintain Free Public Access – Keep Kukrail a \"democratic green commons\" accessible to all without cost. Do not convert it into a ticketed, privatized facility.\n4. Ensure Meaningful Public Consultation – Conduct a transparent, inclusive consultation with local communities, who have never been genuinely consulted and have raised legitimate safety concerns.\n5. No New Day Zoo – Oppose the construction of a new day zoo within the forest to prevent habitat loss and fragmentation, and to protect the existing Gharial Rehabilitation Centre.\n6. Address the Waste Management Issue – Implement a comprehensive waste management plan for Kukrail that addresses the issue of littering, regular clean-ups, and dumping of post-ritual material near the dam area."];
+      const PARA3_OPTIONS = ["I understand that the project awaits final approval from the Supreme Court and that the CEC has submitted its report. I appeal to you, as the custodians of our state's environment and administrative machinery to protect the Kukrail forest. I sincerely hope that the concerns of citizens, who have cherished this forest for generations, will be taken into account. I look forward to your positive response and a commitment to preserving Kukrail forest.\n\nSources:\nhttps://www.msn.com/en-in/news/world/green-ride-kukrail-night-safari-work-to-begin-in-april/ar-AA1Bsysh?apiversion=v2&noservercache=1&domshim=1&renderwebcomponents=1&wcseo=1&batchservertelemetry=1&noservertelemetry=1 \nCEC Report no. 65 of 2025. https://cecindia.in/case-status/application-no \nhttps://timesofindia.indiatimes.com/city/lucknow/up-cabinet-approves-night-safari-park-in-kukrail/articleshow/93600777.cms \nhttps://www.knocksense.com/lucknow/206-cr-released-to-launch-kukrail-night-safari-project-in-lucknow-phase-1-work-to-begin-soon \nhttps://timesofindia.indiatimes.com/city/lucknow/indias-first-night-safari-in-kukrail-all-set-for-a-debut/articleshow/126443132.cms"];
+      const SIGNING_OFF_OPTIONS = ["Yours Sincerely,","In Solidarity,","With hope for justice,","Regards,"];
+
+      // --- Use actual newline characters internally for JS logic ---
+      const LINE_BREAK = "\n";
+      const DOUBLE_LINE_BREAK = "\n\n";
+    
+      
+      let mailtoLink = "";
+      let copyText = ""; // Body only for preview/copy
+      let selectedSubject = "";
+
+      function getRandomElement(arr) {
+        // Ensure arr is an array and not empty before accessing length
+        if (!Array.isArray(arr) || arr.length === 0) return "";
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function escapeHtmlForDisplay(unsafe) {
+        if (typeof unsafe !== "string") return "";
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function prepareMail() {
+        const sendLink = document.getElementById("send");
+
+        try {
+          selectedSubject = getRandomElement(SUBJECT_LINES);
+          const selectedPara1 = getRandomElement(PARA1_OPTIONS);
+          const selectedPara2 = getRandomElement(PARA2_OPTIONS);
+          const selectedPara3 = getRandomElement(PARA3_OPTIONS);
+          const selectedSignoff = getRandomElement(SIGNING_OFF_OPTIONS);
+
+          // --- Construct body using actual newlines ---
+          const bodyForMailto = [
+            selectedPara1,
+            selectedPara2,
+            selectedPara3,
+            selectedSignoff,
+          ].filter(p => typeof p === 'string' && p.length > 0) // Filter out potential empty strings/undefined
+           .join(DOUBLE_LINE_BREAK); // Join paragraphs with internal newlines
+
+          // --- Construct mailto link (URLSearchParams will encode \n correctly) ---
+          const params = new URLSearchParams();
+          // Only add params if they have a value
+          if (CC_ADDRESS) params.append("cc", CC_ADDRESS);
+          if (BCC_ADDRESS) params.append("bcc", BCC_ADDRESS);
+          if (selectedSubject) params.append("subject", selectedSubject);
+          if (bodyForMailto) params.append("body", bodyForMailto); // Let URLSearchParams handle encoding 
+
+
+          // Platform Specific Adjustments (Example for iOS if needed later)
+          let finalQueryString = params.toString();
+          finalQueryString = finalQueryString.replace(/\+/g, '%20');
+
+          // Platform Detection
+					const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+					const platformNavigator = navigator.platform || ""; // For OS-level platform string
+
+					let detectedSystem = "Unknown";
+					let mailtoEncodingProfile = "standard"; // Profile to decide encoding: 'ios_specific' or 'standard'
+
+					// iOS Detection Logic
+					// 1. Check navigator.platform for direct iOS device strings (most reliable if available)
+					if (/iPad|iPhone|iPod/.test(platformNavigator)) {
+						detectedSystem = "iOS";
+						mailtoEncodingProfile = "ios_specific";
+					}
+					// 2. Check userAgent for standard iOS device strings
+					else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) { // !window.MSStream helps avoid some Windows Phone false positives
+						detectedSystem = "iOS";
+						mailtoEncodingProfile = "ios_specific";
+					}
+					// 3. Check for "Macintosh" + "Mobile" in userAgent (common for iPads in desktop mode/emulators)
+					else if (/Macintosh/.test(userAgent) && /Mobile/.test(userAgent)) {
+						detectedSystem = "iOS";
+						mailtoEncodingProfile = "ios_specific";
+					}
+					// 4. Check for "Macintosh" userAgent with multi-touch capability (another iPad desktop mode/emulator indicator)
+					else if (/Macintosh/.test(userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1) {
+						detectedSystem = "iOS";
+						mailtoEncodingProfile = "ios_specific";
+					}
+					// macOS Detection (ensure it's not an iPad already identified above)
+					else if ((/Macintosh/.test(userAgent) || /MacIntel/.test(platformNavigator) || /MacPPC/.test(platformNavigator) || /Mac68K/.test(platformNavigator))) {
+						detectedSystem = "macOS";
+						mailtoEncodingProfile = "standard";
+					}
+					// Android Detection
+					else if (/android/i.test(userAgent)) {
+						detectedSystem = "Android";
+						mailtoEncodingProfile = "standard"; // Android is generally robust
+					}
+					// Windows Detection
+					else if (/Win/.test(platformNavigator)) {
+						detectedSystem = "Windows";
+						mailtoEncodingProfile = "standard";
+					}
+					// Linux Desktop Detection
+					else if (/Linux/.test(platformNavigator) && !/android/i.test(userAgent)) { // Exclude Android's Linux
+						detectedSystem = "Linux";
+						mailtoEncodingProfile = "standard";
+					}
+					// If still "Unknown", it might be a less common OS. 'standard' is a safe default.
+					console.log("Detected System:", detectedSystem);
+					console.log("Using mailto encoding profile:", mailtoEncodingProfile);
+
+					// Apply encoding adjustments based on the profile
+					if (mailtoEncodingProfile === "ios_specific") {
+						console.log("Applying iOS specific mailto link generation strategy.");
+						finalQueryString = finalQueryString.replace(/%0A/g, '%0D%0A');
+						console.log("iOS: Converted newlines from %0A to %0D%0A for better compatibility.");
+					}
+					
+					else if (mailtoEncodingProfile === "standard") {
+						console.log("Applying standard mailto link generation strategy for ", detectedSystem);
+					}
+					// finalQueryString is now potentially adjusted based on the platform.
+
+					if(mailtoLink.length>1998)
+						console.warn("mailto too long for Chrome: " + mailtoLink.length +" chars");
+					else
+						console.log("mailto length OK: "+ mailtoLink.length +" chars");
+
+          if (TO_ADDRESS) {
+             // Encode TO addresses individually, then join
+             const encodedTo = TO_ADDRESS.split(",")
+              .map(e => e.trim()) // Trim whitespace first
+              .filter(e => e)     // Remove empty entries
+              .map(e => encodeURIComponent(e)) // Then encode
+              .join(",");
+
+             if (encodedTo) { // Ensure there's at least one valid TO address after filtering/encoding
+                mailtoLink = `mailto:${encodedTo}?${finalQueryString}`;
+             } else {
+                mailtoLink = ""; // No valid TO address
+                console.error("No valid TO addresses provided after encoding.");
+             }
+
+          } else {
+            mailtoLink = "";
+            console.error("TO address constant is missing or empty.");
+          }
+
+          // --- Construct body text for preview/copy (plain text) ---
+          copyText = [
+              selectedPara1,
+              selectedPara2,
+              selectedPara3,
+              selectedSignoff
+          ].filter(p => typeof p === 'string' && p.length > 0)
+           .join('\n\n');
+
+          // --- Update preview elements safely ---
+          const toElem = document.getElementById("preview-to");
+          const ccElem = document.getElementById("preview-cc");
+          const ccLine = document.getElementById("cc-line");
+          const bccElem = document.getElementById("preview-bcc");
+          const bccLine = document.getElementById("bcc-line");
+          const subjectElem = document.getElementById("preview-subject");
+          const previewElem = document.getElementById("email-preview");
+
+          if (toElem) toElem.textContent = escapeHtmlForDisplay(TO_ADDRESS || '(Not specified)');
+          if (ccElem && ccLine) {
+              if (CC_ADDRESS) {
+                  ccElem.textContent = escapeHtmlForDisplay(CC_ADDRESS);
+                  ccLine.style.display = 'block';
+              } else {
+                  ccLine.style.display = 'none';
+              }
+          }
+          if (bccElem && bccLine) {
+              if (BCC_ADDRESS) {
+                  bccElem.textContent = escapeHtmlForDisplay(BCC_ADDRESS);
+                  bccLine.style.display = 'block';
+              } else {
+                  bccLine.style.display = 'none';
+              }
+          }
+          // Display generated subject or placeholder
+          if (subjectElem) subjectElem.textContent = escapeHtmlForDisplay(selectedSubject || '(No subject generated)');
+          // Display generated body or placeholder
+          if (previewElem) previewElem.textContent = copyText || '(No body content generated)';
+
+
+          // --- Update the href of the anchor tag ---
+          if (sendLink) {
+            if (mailtoLink) {
+              sendLink.href = mailtoLink;
+              sendLink.classList.remove("disabled");
+              sendLink.title = "Click to open in your default email client";
+            } else {
+              sendLink.href = "#"; // Prevent navigation
+              sendLink.classList.add("disabled"); // Visually disable
+              sendLink.title = "Cannot generate email link (check TO address and console errors)";
+            }
+          }
+        } catch (err) {
+          console.error("Error in prepareMail:", err);
+          alert("An error occurred while preparing the email preview. Check console for details.");
+          if (sendLink) {
+            sendLink.href = "#";
+            sendLink.classList.add("disabled");
+            sendLink.title = "Error generating email link";
+          }
+        }
+      }
+
+      // --- Event Listeners within generated file ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const copyButton = document.getElementById("copy");
+
+        if (copyButton) {
+          copyButton.addEventListener("click", () => {
+            // Ensure content exists before trying to copy
+            if (!copyText && !selectedSubject) {
+              alert("Email content not generated yet. Please reload or check generator inputs.");
+              return;
+            }
+            // Construct the full text including headers for copying
+            const fullEmailText = `To: ${TO_ADDRESS || ''}\n${
+              CC_ADDRESS ? `Cc: ${CC_ADDRESS}\n` : ""
+            }${
+              BCC_ADDRESS ? `Bcc: ${BCC_ADDRESS}\n` : ""
+            }Subject: ${selectedSubject || ''}\n\n${copyText || ''}`;
+
+            navigator.clipboard.writeText(fullEmailText)
+              .then(() => {
+                alert("Email content copied to clipboard!");
+              })
+              .catch(err => {
+                console.warn("Clipboard API failed, trying fallback:", err);
+                // Fallback using temporary textarea
+                const textarea = document.createElement("textarea");
+                textarea.value = fullEmailText;
+                textarea.style.position = "fixed"; // Prevent scrolling issues
+                textarea.style.opacity = "0"; // Hide it visually
+                textarea.style.left = "-9999px"; // Move off-screen
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                  document.execCommand("copy");
+                  alert("Email content copied (fallback)!");
+                } catch (errFallback) {
+                  console.error("Fallback copy failed:", errFallback);
+                  alert("Failed to copy automatically. Please copy manually from the preview.");
+                }
+                document.body.removeChild(textarea);
+              });
+          });
+        }
+
+        // Initial preparation on load
+        prepareMail();
+
+        // Automatically redirect to a mail app
+        const sendLink = document.getElementById("send");
+        if (sendLink && !sendLink.classList.contains("disabled")) {
+          window.location.href = sendLink.href;
+        }
+      });
+    
+      // --- Embedded Mail Generation Script END ---
+    </script>
+</body>
+</html>
